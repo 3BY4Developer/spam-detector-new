@@ -3,7 +3,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import joblib
 
-# Sample dataset
 data = pd.DataFrame({
     'text': [
         'Congratulations! You won a free iPhone',
@@ -16,7 +15,6 @@ data = pd.DataFrame({
     'label': ['spam', 'spam', 'ham', 'ham', 'spam', 'ham']
 })
 
-# Train model
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(data['text'])
 y = data['label']
@@ -24,6 +22,5 @@ y = data['label']
 model = MultinomialNB()
 model.fit(X, y)
 
-# Save model and vectorizer
 joblib.dump(model, 'spam_model.pkl')
 joblib.dump(vectorizer, 'vectorizer.pkl')
